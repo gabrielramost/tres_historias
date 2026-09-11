@@ -12,8 +12,8 @@
 <meta property="og:title" content="Tres historias del mar — Rueda Cultural">
 <meta property="og:description" content="De Mariana de Althaus, dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince. Entradas desde S/ 25.">
 <meta property="og:image" content="https://gabrielramost.github.io/tres_historias/og.jpg">
-<meta property="og:image:width" content="1080">
-<meta property="og:image:height" content="1080">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="1258">
 <meta property="og:locale" content="es_PE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tres historias del mar — Rueda Cultural">
@@ -268,25 +268,41 @@
   .barra{
     position: fixed;
     bottom: 0; left: 0; right: 0;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
     background: var(--ink);
     color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 14px;
-    padding: 12px 20px;
+    gap: 12px;
+    padding: 11px 16px;
     z-index: 20;
+    transition: transform .25s ease, opacity .25s ease;
   }
-  .barra .info{ font-size: 0.9rem; line-height: 1.3; }
-  .barra .info b{ display: block; font-size: 1rem; }
+  .barra.oculta{
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .barra .info{ font-size: 0.85rem; line-height: 1.25; min-width: 0; }
+  .barra .info b{ display: block; font-size: 0.98rem; }
   .barra a{
     background: var(--white);
     color: var(--ink);
     text-decoration: none;
     font-weight: 700;
-    padding: 11px 22px;
+    padding: 11px 20px;
     border-radius: 3px;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+  @media (max-width: 380px){
+    .barra{ padding: 10px 12px; gap: 8px; }
+    .barra .info{ font-size: 0.78rem; }
+    .barra .info b{ font-size: 0.9rem; }
+    .barra a{ padding: 10px 16px; font-size: 0.92rem; }
   }
 
   /* ---------- Footer ---------- */
@@ -304,7 +320,7 @@
 <body>
 
   <div class="hero">
-    <img src="flyer.png" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
+    <img src="flyer.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
   </div>
 
   <div class="ficha">
@@ -347,7 +363,7 @@
         <div class="precio">
           <div class="tipo">Preventa y estudiantes</div>
           <div class="monto">S/ 25</div>
-          <div class="detalle">Por persona</div>
+          <div class="detalle">Preventa disponible hasta el 10 de octubre</div>
         </div>
         <div class="precio">
           <div class="tipo">General</div>
@@ -386,7 +402,7 @@
         <li>
           <div>
             <div class="titulo">Paga por Yape o Plin</div>
-            <div class="texto">Envía el monto de tus entradas al <strong>900 137 554</strong>, a nombre de <strong>Berenice Anamaría</strong>. Guarda la captura de la constancia.</div>
+            <div class="texto">Abona el monto de tus entradas al <strong>900 137 554</strong>, a nombre de <strong>Berenice Anamaría</strong>. Guarda la captura de la constancia.</div>
           </div>
         </li>
         <li>
@@ -447,6 +463,17 @@
     </div>
   </section>
 
+  <section class="alt" style="text-align:center;">
+    <div class="wrap">
+      <div class="kicker">¿Tienes dudas?</div>
+      <h2>Escríbenos por WhatsApp</h2>
+      <div class="cuerpo" style="margin:0 auto;">
+        <p>Para cualquier duda o consulta, escríbenos al <strong>900 137 554</strong>. Te respondemos lo antes posible.</p>
+      </div>
+      <a class="btn" href="https://wa.me/51900137554" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </section>
+
   <footer>
     <div class="wrap">
       <span>Rueda Cultural Producciones</span>
@@ -462,6 +489,22 @@
     </div>
     <a href="#reservar">Reservar</a>
   </div>
+
+  <script>
+    // Oculta la barra fija mientras el formulario esta en pantalla,
+    // para que no tape los desplegables en el celular.
+    (function () {
+      var barra = document.querySelector('.barra');
+      var form = document.getElementById('reservar');
+      if (!barra || !form || !('IntersectionObserver' in window)) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          barra.classList.toggle('oculta', e.isIntersecting);
+        });
+      }, { threshold: 0.08 });
+      obs.observe(form);
+    })();
+  </script>
 
 </body>
 </html>
