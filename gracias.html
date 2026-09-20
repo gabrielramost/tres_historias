@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="robots" content="noindex">
+<title>¡Gracias por tu compra! — Tres historias del mar</title>
+
+<!-- Píxel de Meta: reemplaza TU_ID_DE_PIXEL por el número de tu píxel (aparece 1 vez) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'TU_ID_DE_PIXEL');
+  fbq('track', 'PageView');
+
+  // Cada registro con voucher = compra confirmada (se envía una vez por sesión).
+  // El valor (S/ 30) es referencial: promedio entre S/ 25, S/ 35 y 2 x S/ 50.
+  (function () {
+    var enviado = false;
+    try { enviado = sessionStorage.getItem('th_purchase') === '1'; } catch (e) {}
+    if (!enviado) {
+      fbq('track', 'Purchase', {value: 30, currency: 'PEN'});
+      try { sessionStorage.setItem('th_purchase', '1'); } catch (e) {}
+    }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky: #b7cedd;
+    --sky-pale: #dce8f0;
+    --sea: #3e6e82;
+    --sea-deep: #1c3a4a;
+    --ink: #122436;
+    --paper: #f6f4ee;
+    --white: #ffffff;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ touch-action: manipulation; -webkit-text-size-adjust: 100%; }
+
+  body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.55;
+  }
+
+  h1{
+    font-family: 'Archivo Black', sans-serif;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  a{ color: inherit; }
+  p{ margin: 0 0 12px; }
+
+  .wrap{
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    flex: 1;
+    background: linear-gradient(180deg, var(--sky) 0%, #7fa4bc 100%);
+    padding: 52px 0 44px;
+    text-align: center;
+  }
+  .check{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--sea-deep);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .check svg{ width: 28px; height: 28px; }
+  .kicker{
+    color: var(--sea-deep);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+  h1{ font-size: 2.1rem; margin-bottom: 16px; }
+  .hero p{
+    font-size: 1.05rem;
+    color: var(--sea-deep);
+  }
+  .hero p strong{ color: var(--ink); }
+
+  .btn{
+    display: inline-block;
+    background: var(--sea-deep);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px 30px;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+  .btn:hover{ background: var(--sea); }
+
+  /* ---------- Ficha ---------- */
+  .ficha{
+    background: var(--sea-deep);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .ficha span{ color: var(--sky); font-weight: 500; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--ink);
+    color: var(--sky);
+    padding: 24px 0;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  footer a{ color: var(--white); font-weight: 600; text-decoration: none; }
+  footer a:hover{ text-decoration: underline; }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 13 10 18 19 7"></polyline></svg>
+      </div>
+      <div class="kicker">Reserva recibida</div>
+      <h1>¡Gracias por tu compra!</h1>
+      <p>Recibimos tu registro y tu constancia de pago para <strong>Tres historias del mar</strong>.</p>
+      <p>Verificaremos tu pago y te escribiremos por <strong>WhatsApp</strong> con tu reserva confirmada.</p>
+      <a class="btn" href="https://wa.me/51900137554" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="ficha">
+    24 oct — 8 nov <span>·</span> Sáb y dom, 8:00 p.m. <span>·</span> La Vaca Multicolor, Lince
+  </div>
+
+  <footer>
+    <a href="./">Volver a la página de la obra</a>
+  </footer>
+
+</body>
+</html>
