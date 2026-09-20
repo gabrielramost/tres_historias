@@ -522,5 +522,26 @@ fbq('track', 'PageView');
     })();
   </script>
 
+<script>
+  // Avisa a Meta cuando alguien pulsa "Reservar" o llega al formulario (una vez por visita)
+  (function () {
+    var enviado = false;
+    function avisar() {
+      if (enviado || typeof fbq !== 'function') return;
+      enviado = true;
+      fbq('track', 'InitiateCheckout');
+    }
+    document.querySelectorAll('a[href="#reservar"]').forEach(function (a) {
+      a.addEventListener('click', avisar);
+    });
+    var form = document.getElementById('reservar');
+    if (form && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) avisar(); });
+      }, { threshold: 0.3 }).observe(form);
+    }
+  })();
+</script>
+
 </body>
 </html>
