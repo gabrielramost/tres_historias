@@ -33,6 +33,8 @@
     --sand: #d8d2c6;
     --paper: #f6f4ee;
     --white: #ffffff;
+    --wa: #1f8f57;
+    --alerta: #b4442c;
   }
 
   *{ box-sizing: border-box; }
@@ -62,6 +64,17 @@
     margin: 0 auto;
     padding: 0 24px;
   }
+
+  /* ---------- Aviso de preventa ---------- */
+  .aviso{
+    background: var(--alerta);
+    color: var(--white);
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 11px 16px;
+  }
+  .aviso[hidden]{ display: none; }
 
   /* ---------- Hero ---------- */
   .hero{
@@ -126,24 +139,88 @@
   .btn:hover{ background: var(--sea); }
   .btn.claro{ background: var(--white); color: var(--sea-deep); }
   .btn.claro:hover{ background: var(--sky-pale); }
+  .btn.wa{ background: var(--wa); color: var(--white); }
+  .btn.wa:hover{ background: #186f44; }
+
+  /* ---------- Dos caminos ---------- */
+  .caminos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .camino{
+    background: var(--paper);
+    border: 1px solid var(--sand);
+    border-radius: 4px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  section.alt .camino{ background: var(--paper); }
+  .camino h3{
+    font-size: 1.12rem;
+    margin-bottom: 8px;
+  }
+  .camino p{
+    font-size: 0.95rem;
+    color: #40525f;
+    margin-bottom: 16px;
+    flex-grow: 1;
+  }
+  .camino .btn{ margin-top: 0; text-align: center; }
+  @media (max-width: 640px){
+    .caminos{ grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Créditos ---------- */
+  .credito{
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+  }
+  .credito dt{ color: var(--sea); }
+  .credito dd{ margin: 0; font-weight: 600; }
+  .credito dd a{ color: var(--sea); }
+  @media (max-width: 560px){
+    .credito{ grid-template-columns: 1fr; gap: 2px; }
+    .credito dd{ margin-bottom: 12px; }
+  }
+
+  .enlace-ig{
+    display: inline-block;
+    margin-top: 22px;
+    background: var(--sky-pale);
+    color: var(--sea-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 12px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .enlace-ig:hover{ background: var(--sky); }
 
   /* ---------- Precios ---------- */
   .precios{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 14px;
-    margin: 24px 0 26px;
+    margin: 24px 0 0;
   }
   .precio{
     background: var(--white);
     border: 1px solid var(--sand);
     padding: 20px 18px;
   }
+  section.alt .precio{ background: var(--paper); }
   .precio.destacado{
     background: var(--sea-deep);
     border-color: var(--sea-deep);
     color: var(--white);
   }
+  section.alt .precio.destacado{ background: var(--sea-deep); }
   .precio .tipo{ font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
   .precio .monto{
     font-family: 'Archivo Black', sans-serif;
@@ -236,6 +313,14 @@
     display: block;
   }
   .form-nota{ margin-top: 14px; font-size: 0.9rem; color: var(--sky); }
+  .form-ayuda{
+    margin-top: 22px;
+    border-top: 1px solid rgba(255,255,255,.18);
+    padding-top: 20px;
+    font-size: 0.98rem;
+    color: var(--sky-pale);
+  }
+  .form-ayuda .btn{ margin-top: 10px; }
 
   /* ---------- Sala ---------- */
   .sala p{ font-size: 1.05rem; }
@@ -247,21 +332,6 @@
     font-size: 0.92rem;
     padding: 8px 14px;
     margin-top: 4px;
-  }
-
-  /* ---------- Ficha técnica ---------- */
-  .credito{
-    display: grid;
-    grid-template-columns: 150px 1fr;
-    gap: 10px 20px;
-    margin-top: 20px;
-    font-size: 1rem;
-  }
-  .credito dt{ color: var(--sea); }
-  .credito dd{ margin: 0; font-weight: 600; }
-  @media (max-width: 560px){
-    .credito{ grid-template-columns: 1fr; gap: 2px; }
-    .credito dd{ margin-bottom: 12px; }
   }
 
   /* ---------- Barra fija ---------- */
@@ -276,7 +346,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     padding: 11px 16px;
     z-index: 20;
     transition: transform .25s ease, opacity .25s ease;
@@ -288,21 +358,22 @@
   }
   .barra .info{ font-size: 0.85rem; line-height: 1.25; min-width: 0; }
   .barra .info b{ display: block; font-size: 0.98rem; }
+  .barra .cta{ display: flex; gap: 8px; flex-shrink: 0; }
   .barra a{
     background: var(--white);
     color: var(--ink);
     text-decoration: none;
     font-weight: 700;
-    padding: 11px 20px;
+    padding: 11px 18px;
     border-radius: 3px;
     white-space: nowrap;
-    flex-shrink: 0;
   }
+  .barra a.wa{ background: var(--wa); color: var(--white); }
   @media (max-width: 380px){
     .barra{ padding: 10px 12px; gap: 8px; }
     .barra .info{ font-size: 0.78rem; }
     .barra .info b{ font-size: 0.9rem; }
-    .barra a{ padding: 10px 16px; font-size: 0.92rem; }
+    .barra a{ padding: 10px 14px; font-size: 0.9rem; }
   }
 
   /* ---------- Footer ---------- */
@@ -331,9 +402,11 @@ fbq('init', '1140337005351844');
 fbq('track', 'PageView');
 </script>
 <!-- End Meta Pixel Code -->
-  
+
 </head>
 <body>
+
+  <div class="aviso" id="aviso-preventa" hidden></div>
 
   <div class="hero">
     <img src="flyer.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
@@ -360,6 +433,7 @@ fbq('track', 'PageView');
     </div>
   </div>
 
+  <!-- 1. La obra -->
   <section>
     <div class="wrap">
       <div class="kicker">La obra</div>
@@ -371,7 +445,54 @@ fbq('track', 'PageView');
     </div>
   </section>
 
+  <!-- 2. Quiénes la hacen -->
   <section class="alt">
+    <div class="wrap">
+      <div class="kicker">Ficha técnica</div>
+      <h2>Quiénes la hacen</h2>
+      <dl class="credito">
+        <dt>Dramaturgia</dt><dd>Mariana de Althaus</dd>
+        <dt>Dirección</dt><dd>Akemi Toma — <a href="https://akeminat.com/" target="_blank" rel="noopener">akeminat.com</a></dd>
+        <dt>Elenco</dt><dd>Ana Paula Gálvez, María Fernanda Misajel y Gabriela Gaspar</dd>
+        <dt>Producción</dt><dd>Rueda Cultural</dd>
+      </dl>
+      <div class="cuerpo" style="margin-top:26px;">
+        <p>Rueda Cultural es una productora peruana de artes escénicas y audiovisuales. Desde 2024 ha producido temporadas de teatro, conciertos y programas formativos en Lima, Apurímac y Cajamarca.</p>
+      </div>
+      <a class="enlace-ig" href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">Mira nuestras producciones anteriores en @ruedacultural</a>
+    </div>
+  </section>
+
+  <!-- 3. Funciones -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Funciones</div>
+      <h2>Seis fechas, todas a las 8:00 p.m.</h2>
+      <ul class="funciones">
+        <li><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
+        <li><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
+        <li><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
+        <li><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
+        <li><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
+        <li><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Dónde -->
+  <section class="alt sala">
+    <div class="wrap">
+      <div class="kicker">Dónde</div>
+      <h2>La Vaca Multicolor</h2>
+      <div class="cuerpo">
+        <p>Av. César Canevaro 116, interior 1301, Lince.</p>
+        <span class="aforo">Sala íntima de 35 butacas por función</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Precios -->
+  <section>
     <div class="wrap">
       <div class="kicker">Entradas</div>
       <h2>Precios</h2>
@@ -395,25 +516,11 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <section>
-    <div class="wrap">
-      <div class="kicker">Funciones</div>
-      <h2>Seis fechas, todas a las 8:00 p.m.</h2>
-      <ul class="funciones">
-        <li><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
-        <li><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
-        <li><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- 6. Cómo comprar + dos caminos -->
   <section class="alt">
     <div class="wrap">
-      <div class="kicker">Cómo reservar</div>
-      <h2>Tres pasos</h2>
+      <div class="kicker">Cómo comprar</div>
+      <h2>Tres pasos para tener tu entrada</h2>
       <ol class="pasos">
         <li>
           <div>
@@ -430,15 +537,28 @@ fbq('track', 'PageView');
         <li>
           <div>
             <div class="titulo">Recibe tu confirmación</div>
-            <div class="texto">Verificamos tu pago y te escribimos por WhatsApp con tu reserva confirmada.</div>
+            <div class="texto">Verificamos tu pago y te escribimos por WhatsApp con tu entrada confirmada.</div>
           </div>
         </li>
       </ol>
-      <a class="btn" href="#reservar" style="margin-top:24px;">Reservar mi entrada</a>
+
+      <div class="caminos">
+        <div class="camino">
+          <h3>Ya me decidí</h3>
+          <p>Tengo clara la fecha y quiero comprar mi entrada ahora.</p>
+          <a class="btn" href="#comprar">Comprar mi entrada</a>
+        </div>
+        <div class="camino">
+          <h3>Quiero preguntar antes</h3>
+          <p>Necesito más información u orientación para elegir mi función.</p>
+          <a class="btn wa" href="https://wa.me/51900137554?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Tres%20historias%20del%20mar%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20antes%20de%20comprar." target="_blank" rel="noopener" data-wa>Consultar por WhatsApp</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="form-section" id="reservar">
+  <!-- 7. Formulario -->
+  <section class="form-section" id="comprar">
     <div class="wrap">
       <div class="kicker">Paso 2</div>
       <h2>Completa tus datos</h2>
@@ -446,54 +566,22 @@ fbq('track', 'PageView');
         <p>Ten a la mano la captura de tu Yape o Plin antes de empezar.</p>
       </div>
       <div class="form-frame">
-        <iframe src="https://airtable.com/embed/appf1sKFMjFSb8kkp/pagQBFMy6S9mgq6a8/form" title="Formulario de reserva de entradas"></iframe>
+        <iframe src="https://airtable.com/embed/appf1sKFMjFSb8kkp/pagQBFMy6S9mgq6a8/form" title="Formulario de compra de entradas"></iframe>
       </div>
-      <p class="form-nota">Tu reserva queda confirmada cuando verifiquemos tu constancia. Si tienes dudas, escríbenos al 900 137 554.</p>
-    </div>
-  </section>
+      <p class="form-nota">Tu entrada queda confirmada cuando verifiquemos tu constancia. Te escribimos por WhatsApp.</p>
 
-  <section class="sala">
-    <div class="wrap">
-      <div class="kicker">Dónde</div>
-      <h2>La Vaca Multicolor</h2>
-      <div class="cuerpo">
-        <p>Av. César Canevaro 116, interior 1301, Lince.</p>
-        <span class="aforo">Sala íntima de 35 butacas por función</span>
+      <div class="form-ayuda">
+        ¿El formulario no carga o prefieres que te atendamos directo? Escríbenos y compramos tu entrada por WhatsApp.
+        <br>
+        <a class="btn claro" href="https://wa.me/51900137554?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" data-wa>Comprar por WhatsApp</a>
       </div>
-    </div>
-  </section>
-
-  <section class="alt">
-    <div class="wrap">
-      <div class="kicker">Ficha técnica</div>
-      <h2>Quiénes la hacen</h2>
-      <dl class="credito">
-        <dt>Dramaturgia</dt><dd>Mariana de Althaus</dd>
-        <dt>Dirección</dt><dd>Akemi Toma</dd>
-        <dt>Elenco</dt><dd>Ana Paula Gálvez, María Fernanda Misajel y Gabriela Gaspar</dd>
-        <dt>Producción</dt><dd>Rueda Cultural</dd>
-      </dl>
-      <div class="cuerpo" style="margin-top:28px;">
-        <p>Rueda Cultural es una productora peruana de artes escénicas y audiovisuales. Desde 2024 ha producido más de 200 funciones de teatro y más de 30 conciertos, además de programas formativos en Lima, Apurímac y Cajamarca.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="alt" style="text-align:center;">
-    <div class="wrap">
-      <div class="kicker">¿Tienes dudas?</div>
-      <h2>Escríbenos por WhatsApp</h2>
-      <div class="cuerpo" style="margin:0 auto;">
-        <p>Para cualquier duda o consulta, escríbenos al <strong>900 137 554</strong>. Te respondemos lo antes posible.</p>
-      </div>
-      <a class="btn" href="https://wa.me/51900137554" target="_blank" rel="noopener">Escribir por WhatsApp</a>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
       <span>Rueda Cultural Producciones</span>
-      <a href="https://wa.me/51900137554" target="_blank" rel="noopener">WhatsApp: 900 137 554</a>
+      <a href="https://wa.me/51900137554" target="_blank" rel="noopener" data-wa>WhatsApp: 900 137 554</a>
       <a href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">Instagram y TikTok: @ruedacultural</a>
     </div>
   </footer>
@@ -501,17 +589,45 @@ fbq('track', 'PageView');
   <div class="barra">
     <div class="info">
       <b>Desde S/ 25</b>
-      24 oct — 8 nov
+      <span id="barra-sub">24 oct — 8 nov</span>
     </div>
-    <a href="#reservar">Reservar</a>
+    <div class="cta">
+      <a class="wa" href="https://wa.me/51900137554?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Tres%20historias%20del%20mar." target="_blank" rel="noopener" data-wa>WhatsApp</a>
+      <a href="#comprar">Comprar</a>
+    </div>
   </div>
+
+  <script>
+    // Cuenta regresiva de la preventa (hasta el 10 de octubre, 23:59 hora de Lima).
+    (function () {
+      var fin = new Date('2026-10-10T23:59:59-05:00');
+      var dias = Math.ceil((fin - new Date()) / 86400000);
+      var aviso = document.getElementById('aviso-preventa');
+      var sub = document.getElementById('barra-sub');
+      if (!aviso) return;
+
+      if (dias > 1) {
+        aviso.textContent = 'Preventa S/ 25: quedan ' + dias + ' días · Precio regular S/ 35';
+        aviso.hidden = false;
+        if (sub) sub.textContent = 'Preventa: ' + dias + ' días';
+      } else if (dias === 1) {
+        aviso.textContent = 'Último día de preventa S/ 25 · Precio regular S/ 35';
+        aviso.hidden = false;
+        if (sub) sub.textContent = 'Último día de preventa';
+      } else if (dias === 0) {
+        aviso.textContent = 'Hoy cierra la preventa S/ 25 · Precio regular S/ 35';
+        aviso.hidden = false;
+        if (sub) sub.textContent = 'Hoy cierra la preventa';
+      }
+    })();
+  </script>
 
   <script>
     // Oculta la barra fija mientras el formulario esta en pantalla,
     // para que no tape los desplegables en el celular.
     (function () {
       var barra = document.querySelector('.barra');
-      var form = document.getElementById('reservar');
+      var form = document.getElementById('comprar');
       if (!barra || !form || !('IntersectionObserver' in window)) return;
       var obs = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -522,26 +638,40 @@ fbq('track', 'PageView');
     })();
   </script>
 
-<script>
-  // Avisa a Meta cuando alguien pulsa "Reservar" o llega al formulario (una vez por visita)
-  (function () {
-    var enviado = false;
-    function avisar() {
-      if (enviado || typeof fbq !== 'function') return;
-      enviado = true;
-      fbq('track', 'InitiateCheckout');
-    }
-    document.querySelectorAll('a[href="#reservar"]').forEach(function (a) {
-      a.addEventListener('click', avisar);
-    });
-    var form = document.getElementById('reservar');
-    if (form && 'IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) avisar(); });
-      }, { threshold: 0.3 }).observe(form);
-    }
-  })();
-</script>
+  <script>
+    // Avisa a Meta cuando alguien pulsa "Comprar" o llega al formulario (una vez por visita)
+    (function () {
+      var enviado = false;
+      function avisar() {
+        if (enviado || typeof fbq !== 'function') return;
+        enviado = true;
+        fbq('track', 'InitiateCheckout');
+      }
+      document.querySelectorAll('a[href="#comprar"]').forEach(function (a) {
+        a.addEventListener('click', avisar);
+      });
+      var form = document.getElementById('comprar');
+      if (form && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) { if (e.isIntersecting) avisar(); });
+        }, { threshold: 0.3 }).observe(form);
+      }
+    })();
+  </script>
+
+  <script>
+    // Avisa a Meta cuando alguien se va por WhatsApp (una vez por visita).
+    (function () {
+      var enviado = false;
+      document.querySelectorAll('a[data-wa]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          if (enviado || typeof fbq !== 'function') return;
+          enviado = true;
+          fbq('track', 'Contact');
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
