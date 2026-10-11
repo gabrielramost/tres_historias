@@ -35,6 +35,8 @@
     --white: #ffffff;
     --wa: #1f8f57;
     --alerta: #b4442c;
+    --cta: #c0432a;       /* color único para todas las acciones de compra */
+    --cta-hover: #9f3520;
   }
 
   *{ box-sizing: border-box; }
@@ -142,6 +144,49 @@
   .btn.wa{ background: var(--wa); color: var(--white); }
   .btn.wa:hover{ background: #186f44; }
 
+  /* Botón principal de compra: rojo, con ícono de WhatsApp */
+  .btn.compra{
+    background: var(--cta);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.05rem;
+    padding: 16px 30px;
+    box-shadow: 0 3px 0 var(--cta-hover);
+  }
+  .btn.compra:hover{ background: var(--cta-hover); }
+  .btn.compra svg, .barra a.compra svg{ width: 20px; height: 20px; flex-shrink: 0; fill: currentColor; }
+  .btn.contorno{
+    background: transparent;
+    color: var(--sea-deep);
+    border: 2px solid var(--sea-deep);
+    padding: 12px 28px;
+  }
+  .btn.contorno:hover{ background: var(--sea-deep); color: var(--white); }
+  .microcopy{ font-size: 0.86rem; color: var(--sea); margin-top: 10px; }
+
+  /* Llamado a la compra justo después de la ficha */
+  .cta-inicio{
+    background: var(--sea-deep);
+    border-top: 1px solid rgba(255,255,255,.12);
+  }
+  .cta-inicio .wrap{
+    padding: 0 24px 28px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .cta-inicio .btn{ margin-top: 22px; }
+  .cta-inicio .microcopy{ color: var(--sky); margin: 22px 0 0; }
+  @media (max-width: 640px){
+    .cta-inicio .btn{ width: 100%; }
+    .cta-inicio .microcopy{ margin-top: 0; }
+  }
+  .cta-precios{ margin-top: 26px; }
+
   /* ---------- Dos caminos ---------- */
   .caminos{
     display: grid;
@@ -229,6 +274,23 @@
   }
   .precio .detalle{ font-size: 0.85rem; color: var(--sea); margin-top: 6px; }
   .precio.destacado .detalle{ color: var(--sky); }
+  .preventa-cerrada{
+    margin-top: 14px;
+    border: 1px dashed var(--sand);
+    padding: 14px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: #7d8a93;
+    font-size: 0.92rem;
+  }
+  .preventa-cerrada s{
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1.2rem;
+    color: #9aa5ac;
+  }
+  .preventa-cerrada b{ color: var(--alerta); font-weight: 600; }
   @media (max-width: 640px){
     .precios{ grid-template-columns: 1fr; }
   }
@@ -265,6 +327,20 @@
     color: var(--sea);
     display: block;
   }
+  /* Etiqueta de disponibilidad: se controla con data-estado en cada fecha */
+  .funciones li::after{
+    display: block;
+    margin-top: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .funciones li[data-estado="disponible"]::after{ content: "Disponible"; color: var(--wa); }
+  .funciones li[data-estado="ultimas"]{ border-color: var(--alerta); }
+  .funciones li[data-estado="ultimas"]::after{ content: "Últimas entradas"; color: var(--alerta); }
+  .funciones li[data-estado="agotado"]{ opacity: .55; }
+  .funciones li[data-estado="agotado"] .num{ text-decoration: line-through; }
+  .funciones li[data-estado="agotado"]::after{ content: "Agotado"; color: var(--ink); }
   @media (max-width: 640px){
     .funciones{ grid-template-columns: repeat(3, 1fr); }
   }
@@ -369,6 +445,14 @@
     white-space: nowrap;
   }
   .barra a.wa{ background: var(--wa); color: var(--white); }
+  .barra a.compra{
+    background: var(--cta);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+  }
   @media (max-width: 380px){
     .barra{ padding: 10px 12px; gap: 8px; }
     .barra .info{ font-size: 0.78rem; }
@@ -406,8 +490,6 @@ fbq('track', 'PageView');
 </head>
 <body>
 
-  <div class="aviso" id="aviso-preventa" hidden></div>
-
   <div class="hero">
     <img src="flyer.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
   </div>
@@ -430,6 +512,16 @@ fbq('track', 'PageView');
         <div class="label">Entradas</div>
         <div class="value">Desde S/ 25</div>
       </div>
+    </div>
+  </div>
+
+  <div class="cta-inicio">
+    <div class="wrap">
+      <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
+        Comprar entradas
+      </a>
+      <span class="microcopy">Por WhatsApp · Te confirmamos tu fecha antes de pagar</span>
     </div>
   </div>
 
@@ -468,14 +560,21 @@ fbq('track', 'PageView');
     <div class="wrap">
       <div class="kicker">Funciones</div>
       <h2>Seis fechas, todas a las 8:00 p.m.</h2>
+      <!--
+        DISPONIBILIDAD: cambia solo la palabra de data-estado en cada fecha.
+          disponible  → muestra "Disponible"
+          ultimas     → muestra "Últimas entradas" (úsalo cuando queden ~8 o menos)
+          agotado     → muestra "Agotado" y atenúa la fecha
+      -->
       <ul class="funciones">
-        <li><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
-        <li><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
-        <li><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
-        <li><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
+        <li data-estado="ultimas"><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
+        <li data-estado="disponible"><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
+        <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
+        <li data-estado="disponible"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
+        <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
+        <li data-estado="disponible"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
       </ul>
+      <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">Sala de 35 butacas por función: cuando una fecha se llena, no abrimos más cupos.</p>
     </div>
   </section>
 
@@ -498,20 +597,32 @@ fbq('track', 'PageView');
       <h2>Precios</h2>
       <div class="precios">
         <div class="precio">
-          <div class="tipo">Preventa y estudiantes</div>
-          <div class="monto">S/ 25</div>
-          <div class="detalle">Preventa disponible hasta el 10 de octubre</div>
-        </div>
-        <div class="precio">
           <div class="tipo">General</div>
           <div class="monto">S/ 35</div>
           <div class="detalle">Por persona</div>
+        </div>
+        <div class="precio">
+          <div class="tipo">Estudiantes</div>
+          <div class="monto">S/ 25</div>
+          <div class="detalle">Presentando carné vigente en el ingreso</div>
         </div>
         <div class="precio destacado">
           <div class="tipo">Promoción en pareja</div>
           <div class="monto">2 × S/ 50</div>
           <div class="detalle">S/ 25 cada entrada</div>
         </div>
+      </div>
+      <div class="preventa-cerrada">
+        <span>Preventa</span>
+        <s>S/ 25</s>
+        <b>La preventa culminó el 10 de octubre</b>
+      </div>
+      <div class="cta-precios">
+        <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
+          Comprar entradas
+        </a>
+        <p class="microcopy">Solo 35 butacas por función.</p>
       </div>
     </div>
   </section>
@@ -520,38 +631,47 @@ fbq('track', 'PageView');
   <section class="alt">
     <div class="wrap">
       <div class="kicker">Cómo comprar</div>
-      <h2>Tres pasos para tener tu entrada</h2>
+      <h2>Cuatro pasos para tener tu entrada</h2>
       <ol class="pasos">
         <li>
           <div>
+            <div class="titulo">Elige tu función y cuántas entradas</div>
+            <div class="texto">Revisa que tu fecha esté disponible. Si tienes dudas, escríbenos y te confirmamos antes de pagar.</div>
+          </div>
+        </li>
+        <li>
+          <div>
             <div class="titulo">Paga por Yape o Plin</div>
-            <div class="texto">Abona el monto de tus entradas al <strong>983 545 543</strong>, a nombre de <strong>Gabriel Ramos</strong>. Guarda la captura de la constancia.</div>
+            <div class="texto">Abona el monto de tus entradas al <strong>983 545 543</strong>, a nombre de <strong>Gabriel Ramos</strong>. Guarda la captura.</div>
           </div>
         </li>
         <li>
           <div>
-            <div class="titulo">Completa el formulario</div>
-            <div class="texto">Registra tus datos, elige la fecha de la función y sube la captura de tu pago.</div>
+            <div class="titulo">Envía tus datos y la captura</div>
+            <div class="texto">Por WhatsApp (nosotros te registramos) o tú mismo en el formulario de esta página.</div>
           </div>
         </li>
         <li>
           <div>
-            <div class="titulo">Recibe tu confirmación</div>
-            <div class="texto">Verificamos tu pago y te escribimos por WhatsApp con tu entrada confirmada.</div>
+            <div class="titulo">Recibe tu entrada</div>
+            <div class="texto">Verificamos tu pago y te enviamos tu entrada con código QR a tu correo.</div>
           </div>
         </li>
       </ol>
 
       <div class="caminos">
         <div class="camino">
-          <h3>Ya me decidí</h3>
-          <p>Tengo clara la fecha y quiero comprar mi entrada ahora.</p>
-          <a class="btn" href="#comprar">Comprar mi entrada</a>
+          <h3>Compra por WhatsApp</h3>
+          <p>La forma más rápida: te confirmamos disponibilidad antes de pagar y registramos tus datos por ti.</p>
+          <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
+            Comprar por WhatsApp
+          </a>
         </div>
         <div class="camino">
-          <h3>Prefiero comprar por WhatsApp</h3>
-          <p>Te ayudamos a elegir tu función y confirmamos tu compra por chat.</p>
-          <a class="btn wa" href="https://wa.me/51983545543?text=Hola%2C%20vi%20la%20p%C3%A1gina%20de%20Tres%20historias%20del%20mar%20y%20quiero%20comprar%20entrada(s).%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" data-wa>Comprar por WhatsApp</a>
+          <h3>Compra directa en la web</h3>
+          <p>Si tu fecha figura como disponible, paga y llena el formulario tú mismo.</p>
+          <a class="btn contorno" href="#comprar">Ir al formulario</a>
         </div>
       </div>
     </div>
@@ -560,15 +680,15 @@ fbq('track', 'PageView');
   <!-- 7. Formulario -->
   <section class="form-section" id="comprar">
     <div class="wrap">
-      <div class="kicker">Paso 2</div>
+      <div class="kicker">Compra directa</div>
       <h2>Completa tus datos</h2>
       <div class="cuerpo">
-        <p>Ten a la mano la captura de tu Yape o Plin antes de empezar.</p>
+        <p>Antes de empezar: revisa que tu función esté disponible y paga por Yape o Plin al <strong>983 545 543</strong> (Gabriel Ramos). Ten a la mano la captura.</p>
       </div>
       <div class="form-frame">
         <iframe src="https://airtable.com/embed/appf1sKFMjFSb8kkp/pagQBFMy6S9mgq6a8/form" title="Formulario de compra de entradas"></iframe>
       </div>
-      <p class="form-nota">Tu entrada queda confirmada cuando verifiquemos tu constancia. Te escribimos por WhatsApp.</p>
+      <p class="form-nota">Tu entrada queda confirmada cuando verifiquemos tu pago. Te la enviamos a tu correo.</p>
 
       <div class="form-ayuda">
         ¿El formulario no carga o prefieres que te atendamos directo? Escríbenos y compramos tu entrada por WhatsApp.
@@ -592,49 +712,29 @@ fbq('track', 'PageView');
       <span id="barra-sub">24 oct — 8 nov</span>
     </div>
     <div class="cta">
-      <a class="wa" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Tres%20historias%20del%20mar." target="_blank" rel="noopener" data-wa>WhatsApp</a>
-      <a href="#comprar">Comprar</a>
+      <a class="compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
+        Comprar entradas
+      </a>
     </div>
   </div>
 
   <script>
-    // Cuenta regresiva de la preventa (hasta el 10 de octubre, 23:59 hora de Lima).
-    (function () {
-      var fin = new Date('2026-10-10T23:59:59-05:00');
-      var dias = Math.ceil((fin - new Date()) / 86400000);
-      var aviso = document.getElementById('aviso-preventa');
-      var sub = document.getElementById('barra-sub');
-      if (!aviso) return;
-
-      if (dias > 1) {
-        aviso.textContent = 'Preventa S/ 25: quedan ' + dias + ' días · Precio regular S/ 35';
-        aviso.hidden = false;
-        if (sub) sub.textContent = 'Preventa: ' + dias + ' días';
-      } else if (dias === 1) {
-        aviso.textContent = 'Último día de preventa S/ 25 · Precio regular S/ 35';
-        aviso.hidden = false;
-        if (sub) sub.textContent = 'Último día de preventa';
-      } else if (dias === 0) {
-        aviso.textContent = 'Hoy cierra la preventa S/ 25 · Precio regular S/ 35';
-        aviso.hidden = false;
-        if (sub) sub.textContent = 'Hoy cierra la preventa';
-      }
-    })();
-  </script>
-
-  <script>
-    // Oculta la barra fija mientras el formulario esta en pantalla,
-    // para que no tape los desplegables en el celular.
+    // Oculta la barra fija mientras el formulario esta en pantalla (para que no tape
+    // los desplegables en el celular) y mientras se ve el botón rojo de arriba
+    // (para no mostrar dos botones iguales a la vez).
     (function () {
       var barra = document.querySelector('.barra');
-      var form = document.getElementById('comprar');
-      if (!barra || !form || !('IntersectionObserver' in window)) return;
+      var zonas = [document.getElementById('comprar'), document.querySelector('.cta-inicio')].filter(Boolean);
+      if (!barra || !zonas.length || !('IntersectionObserver' in window)) return;
+      var visibles = new Set();
       var obs = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          barra.classList.toggle('oculta', e.isIntersecting);
+          if (e.isIntersecting) visibles.add(e.target); else visibles.delete(e.target);
         });
+        barra.classList.toggle('oculta', visibles.size > 0);
       }, { threshold: 0.08 });
-      obs.observe(form);
+      zonas.forEach(function (z) { obs.observe(z); });
     })();
   </script>
 
