@@ -185,7 +185,18 @@
     .cta-inicio .btn{ width: 100%; }
     .cta-inicio .microcopy{ margin-top: 0; }
   }
-  .cta-precios{ margin-top: 26px; }
+
+  .reglas{
+    margin: 18px 0 0;
+    padding: 12px 16px;
+    background: var(--sky-pale);
+    border-left: 3px solid var(--alerta);
+    font-size: 0.95rem;
+  }
+  .oculto{
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
 
   /* ---------- Dos caminos ---------- */
   .caminos{
@@ -490,6 +501,8 @@ fbq('track', 'PageView');
 </head>
 <body>
 
+  <h1 class="oculto">Tres historias del mar, de Mariana de Althaus — dirigida por Akemi Toma. Temporada del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince.</h1>
+
   <div class="hero">
     <img src="flyer.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
   </div>
@@ -517,11 +530,8 @@ fbq('track', 'PageView');
 
   <div class="cta-inicio">
     <div class="wrap">
-      <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
-        Comprar entradas
-      </a>
-      <span class="microcopy">Por WhatsApp · Te confirmamos tu fecha antes de pagar</span>
+      <a class="btn compra" href="#como-comprar">Comprar entradas</a>
+      <span class="microcopy">Por WhatsApp o en la web · Te confirmamos tu fecha antes de pagar</span>
     </div>
   </div>
 
@@ -537,26 +547,8 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- 2. Quiénes la hacen -->
+  <!-- 2. Funciones -->
   <section class="alt">
-    <div class="wrap">
-      <div class="kicker">Ficha técnica</div>
-      <h2>Quiénes la hacen</h2>
-      <dl class="credito">
-        <dt>Dramaturgia</dt><dd>Mariana de Althaus</dd>
-        <dt>Dirección</dt><dd>Akemi Toma — <a href="https://akeminat.com/" target="_blank" rel="noopener">akeminat.com</a></dd>
-        <dt>Elenco</dt><dd>Ana Paula Gálvez, María Fernanda Misajel y Gabriela Gaspar</dd>
-        <dt>Producción</dt><dd>Rueda Cultural</dd>
-      </dl>
-      <div class="cuerpo" style="margin-top:26px;">
-        <p>Rueda Cultural es una productora peruana de artes escénicas y audiovisuales. Desde 2024 ha producido temporadas de teatro, conciertos y programas formativos en Lima, Apurímac y Cajamarca.</p>
-      </div>
-      <a class="enlace-ig" href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">Mira nuestras producciones anteriores en @ruedacultural</a>
-    </div>
-  </section>
-
-  <!-- 3. Funciones -->
-  <section>
     <div class="wrap">
       <div class="kicker">Funciones</div>
       <h2>Seis fechas, todas a las 8:00 p.m.</h2>
@@ -578,19 +570,7 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- 4. Dónde -->
-  <section class="alt sala">
-    <div class="wrap">
-      <div class="kicker">Dónde</div>
-      <h2>La Vaca Multicolor</h2>
-      <div class="cuerpo">
-        <p>Av. César Canevaro 116, interior 1301, Lince.</p>
-        <span class="aforo">Sala íntima de 35 butacas por función</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Precios -->
+  <!-- 3. Precios -->
   <section>
     <div class="wrap">
       <div class="kicker">Entradas</div>
@@ -608,7 +588,7 @@ fbq('track', 'PageView');
         </div>
         <div class="precio destacado">
           <div class="tipo">Promoción en pareja</div>
-          <div class="monto">2 × S/ 50</div>
+          <div class="monto">2 entradas por S/ 50</div>
           <div class="detalle">S/ 25 cada entrada</div>
         </div>
       </div>
@@ -617,18 +597,11 @@ fbq('track', 'PageView');
         <s>S/ 25</s>
         <b>La preventa culminó el 10 de octubre</b>
       </div>
-      <div class="cta-precios">
-        <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
-          Comprar entradas
-        </a>
-        <p class="microcopy">Solo 35 butacas por función.</p>
-      </div>
     </div>
   </section>
 
-  <!-- 6. Cómo comprar + dos caminos -->
-  <section class="alt">
+  <!-- 4. Cómo comprar + dos caminos -->
+  <section class="alt" id="como-comprar">
     <div class="wrap">
       <div class="kicker">Cómo comprar</div>
       <h2>Cuatro pasos para tener tu entrada</h2>
@@ -659,14 +632,13 @@ fbq('track', 'PageView');
         </li>
       </ol>
 
+      <p class="reglas"><strong>Importante:</strong> puertas 7:30 p.m. Una vez iniciada la función no se permite el ingreso.</p>
+
       <div class="caminos">
         <div class="camino">
           <h3>Compra por WhatsApp</h3>
           <p>La forma más rápida: te confirmamos disponibilidad antes de pagar y registramos tus datos por ti.</p>
-          <a class="btn compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
-            Comprar por WhatsApp
-          </a>
+          <a class="btn wa" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>Comprar por WhatsApp</a>
         </div>
         <div class="camino">
           <h3>Compra directa en la web</h3>
@@ -677,7 +649,7 @@ fbq('track', 'PageView');
     </div>
   </section>
 
-  <!-- 7. Formulario -->
+  <!-- 5. Formulario -->
   <section class="form-section" id="comprar">
     <div class="wrap">
       <div class="kicker">Compra directa</div>
@@ -698,6 +670,36 @@ fbq('track', 'PageView');
     </div>
   </section>
 
+  <!-- 6. Dónde -->
+  <section class="sala">
+    <div class="wrap">
+      <div class="kicker">Dónde</div>
+      <h2>La Vaca Multicolor</h2>
+      <div class="cuerpo">
+        <p>Av. César Canevaro 116, interior 1301, Lince.</p>
+        <a class="btn" href="https://www.google.com/maps/place/La+Vaca+Multicolor/@-12.0835328,-77.038504,17z/data=!3m1!4b1!4m6!3m5!1s0x9105c96b2cc5413f:0x13ef3ee1cf5381fa!8m2!3d-12.0835381!4d-77.0359291!16s%2Fg%2F11q7b6x2ks" target="_blank" rel="noopener">Cómo llegar (Google Maps)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Quiénes la hacen -->
+  <section class="alt">
+    <div class="wrap">
+      <div class="kicker">Ficha técnica</div>
+      <h2>Quiénes la hacen</h2>
+      <dl class="credito">
+        <dt>Dramaturgia</dt><dd>Mariana de Althaus</dd>
+        <dt>Dirección</dt><dd>Akemi Toma — <a href="https://akeminat.com/" target="_blank" rel="noopener">akeminat.com</a></dd>
+        <dt>Elenco</dt><dd>Ana Paula Gálvez, María Fernanda Misajel y Gabriela Gaspar</dd>
+        <dt>Producción</dt><dd>Rueda Cultural</dd>
+      </dl>
+      <div class="cuerpo" style="margin-top:26px;">
+        <p>Rueda Cultural es una productora peruana de artes escénicas y audiovisuales. Desde 2024 ha producido temporadas de teatro, conciertos y programas formativos en Lima, Apurímac y Cajamarca.</p>
+      </div>
+      <a class="enlace-ig" href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">Mira nuestras producciones anteriores en @ruedacultural</a>
+    </div>
+  </section>
+
   <footer>
     <div class="wrap">
       <span>Rueda Cultural Producciones</span>
@@ -712,10 +714,8 @@ fbq('track', 'PageView');
       <span id="barra-sub">24 oct — 8 nov</span>
     </div>
     <div class="cta">
-      <a class="compra" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.5-2.3c1.1.3 2.3.5 3.5.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg>
-        Comprar entradas
-      </a>
+      <a class="wa" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>WhatsApp</a>
+      <a href="#como-comprar">Comprar</a>
     </div>
   </div>
 
