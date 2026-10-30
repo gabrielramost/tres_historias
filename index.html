@@ -115,6 +115,27 @@
     .ficha .wrap{ grid-template-columns: 1fr 1fr; }
   }
 
+  /* ---------- Crítica y galería ---------- */
+  .criticas{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:6px; }
+  @media (max-width: 760px){ .criticas{ grid-template-columns:1fr; } }
+  .critica{ background:var(--paper); border-left:4px solid var(--cta); padding:22px 22px 18px; border-radius:3px; display:flex; flex-direction:column; }
+  .critica blockquote{ margin:0 0 12px; font-size:1.12rem; line-height:1.5; font-style:italic; color:var(--ink); }
+  .critica blockquote + blockquote{ font-size:1rem; color:var(--sea-deep); }
+  .critica .fuente{ margin-top:auto; font-size:0.9rem; color:var(--sea); }
+  .critica .fuente b{ color:var(--ink); }
+  .critica a{ color:var(--cta); font-weight:700; text-decoration:none; white-space:nowrap; }
+  .galeria{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px; }
+  .galeria a{ display:block; border-radius:3px; overflow:hidden; cursor:zoom-in; aspect-ratio:3/2; background:var(--ink); }
+  .galeria a:first-child{ grid-column:1 / -1; aspect-ratio:16/9; }
+  .galeria a.vertical img{ object-position:center 30%; }
+  .galeria img{ display:block; width:100%; height:100%; object-fit:cover; transition:transform .3s ease; }
+  .credito{ clear:both; }
+  .galeria a:hover img{ transform:scale(1.03); }
+  .credito{ font-size:0.88rem; color:var(--sea); margin-top:4px; }
+  .visor{ position:fixed; inset:0; background:rgba(10,20,30,.92); display:none; align-items:center; justify-content:center; z-index:1000; padding:16px; cursor:zoom-out; }
+  .visor.abierto{ display:flex; }
+  .visor img{ max-width:100%; max-height:100%; border-radius:3px; }
+
   /* ---------- Secciones ---------- */
   section{ padding: 52px 0; }
   section.alt{ background: var(--white); }
@@ -547,6 +568,46 @@ fbq('track', 'PageView');
     </div>
   </section>
 
+  <!-- 1b. Lo que dice la crítica -->
+  <section class="alt" id="critica">
+    <div class="wrap">
+      <div class="kicker">Lo que dice la crítica</div>
+      <h2>Estreno con funciones agotadas</h2>
+      <div class="criticas">
+        <div class="critica">
+          <blockquote>“Bajo la dirección virtuosamente sensible de Akemi Toma.”</blockquote>
+          <blockquote>“Ana Paula Gálvez cautiva desde sus primeras intervenciones por una naturalidad orgánica.” · “Misajel equilibra la aspereza y la vulnerabilidad con un manejo matizado de gran fineza.”</blockquote>
+          <p class="fuente"><b>Puro Teatro</b> · 25 de octubre de 2026 · <a href="https://puroteatro.pe/blog/una-marea-hacia-el-perdon-tres-historias-del-mar-en-la-vaca-multicolor" target="_blank" rel="noopener">Leer la nota →</a></p>
+        </div>
+        <div class="critica">
+          <blockquote>“Se nota el trabajo y el cariño detrás de la producción.”</blockquote>
+          <blockquote>“Me voy muy satisfecha, la obra es bien humana y los diálogos me llegaron bastante.” — una espectadora</blockquote>
+          <p class="fuente"><b>Glitch</b> · Danna Saucedo · 28 de octubre de 2026 · <a href="https://tpd0517-grupo3.ulima.pe/?p=555" target="_blank" rel="noopener">Leer la nota →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1c. Galería -->
+  <section id="galeria">
+    <div class="wrap">
+      <div class="kicker">En escena</div>
+      <h2>Así se vivieron las primeras funciones</h2>
+      <div class="galeria">
+        <a href="fotos/escena-01.jpg" data-visor><img src="fotos/escena-01.jpg" alt="Las tres hermanas en escena — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-02.jpg" data-visor><img src="fotos/escena-02.jpg" alt="Una escena entre hermanas — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-03.jpg" data-visor><img src="fotos/escena-03.jpg" alt="Brindis en escena — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-04.jpg" class="vertical" data-visor><img src="fotos/escena-04.jpg" alt="La escultura de los rostros — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-05.jpg" data-visor><img src="fotos/escena-05.jpg" alt="Una escena de confrontación — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-06.jpg" data-visor><img src="fotos/escena-06.jpg" alt="Un momento de humor — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-07.jpg" data-visor><img src="fotos/escena-07.jpg" alt="La escena final, en luz azul — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-08.jpg" class="vertical" data-visor><img src="fotos/escena-08.jpg" alt="El abrazo — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-09.jpg" data-visor><img src="fotos/escena-09.jpg" alt="Saludo final del elenco — Tres historias del mar" loading="lazy"></a>
+      </div>
+      <p class="credito">Fotos de las funciones del 24 y 25 de octubre en La Vaca Multicolor.</p>
+    </div>
+  </section>
+
   <!-- 2. Funciones -->
   <section class="alt">
     <div class="wrap">
@@ -566,7 +627,7 @@ fbq('track', 'PageView');
         <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
         <li data-estado="disponible"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
       </ul>
-      <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">Sala de 32 butacas por función: cuando una fecha se llena, no abrimos más cupos.</p>
+      <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">Sala de 35 butacas por función: cuando una fecha se llena, no abrimos más cupos.</p>
     </div>
   </section>
 
@@ -773,5 +834,16 @@ fbq('track', 'PageView');
     })();
   </script>
 
+<div class="visor" id="visor" aria-hidden="true"><img alt=""></div>
+<script>
+(function(){
+  var v=document.getElementById('visor'), vi=v.querySelector('img');
+  document.querySelectorAll('[data-visor]').forEach(function(a){
+    a.addEventListener('click',function(e){ e.preventDefault(); vi.src=a.href; vi.alt=a.querySelector('img').alt; v.classList.add('abierto'); });
+  });
+  v.addEventListener('click',function(){ v.classList.remove('abierto'); vi.src=''; });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ v.classList.remove('abierto'); } });
+})();
+</script>
 </body>
 </html>
