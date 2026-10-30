@@ -120,7 +120,7 @@
   @media (max-width: 760px){ .criticas{ grid-template-columns:1fr; } }
   .critica{ background:var(--paper); border-left:4px solid var(--cta); padding:22px 22px 18px; border-radius:3px; display:flex; flex-direction:column; }
   .critica blockquote{ margin:0 0 12px; font-size:1.12rem; line-height:1.5; font-style:italic; color:var(--ink); }
-  .critica blockquote + blockquote{ font-size:1rem; color:var(--sea-deep); }
+  .critica blockquote + blockquote{ font-size:1rem; color:var(--sea-deep); margin-bottom:8px; }
   .critica .fuente{ margin-top:auto; font-size:0.9rem; color:var(--sea); }
   .critica .fuente b{ color:var(--ink); }
   .critica a{ color:var(--cta); font-weight:700; text-decoration:none; white-space:nowrap; }
@@ -370,6 +370,8 @@
   .funciones li[data-estado="disponible"]::after{ content: "Disponible"; color: var(--wa); }
   .funciones li[data-estado="ultimas"]{ border-color: var(--alerta); }
   .funciones li[data-estado="ultimas"]::after{ content: "Quedan pocas entradas"; color: var(--alerta); }
+  .funciones li[data-estado="pronto"]{ border-color: var(--cta); }
+  .funciones li[data-estado="pronto"]::after{ content: "¡Este fin de semana!"; color: var(--cta); font-weight: 700; }
   .funciones li[data-estado="agotado"]{ opacity: .55; }
   .funciones li[data-estado="agotado"] .num{ text-decoration: line-through; }
   .funciones li[data-estado="agotado"]::after{ content: "Sold out"; color: var(--ink); }
@@ -576,7 +578,9 @@ fbq('track', 'PageView');
       <div class="criticas">
         <div class="critica">
           <blockquote>“Bajo la dirección virtuosamente sensible de Akemi Toma.”</blockquote>
-          <blockquote>“Ana Paula Gálvez cautiva desde sus primeras intervenciones por una naturalidad orgánica.” · “Misajel equilibra la aspereza y la vulnerabilidad con un manejo matizado de gran fineza.”</blockquote>
+          <blockquote>“Ana Paula Gálvez cautiva desde sus primeras intervenciones por una naturalidad orgánica.”</blockquote>
+          <blockquote>“Misajel equilibra la aspereza y la vulnerabilidad con un manejo matizado de gran fineza.”</blockquote>
+          <blockquote>“Gaspar vuelve a hacer gala de su notable desempeño escénico.”</blockquote>
           <p class="fuente"><b>Puro Teatro</b> · 25 de octubre de 2026 · <a href="https://puroteatro.pe/blog/una-marea-hacia-el-perdon-tres-historias-del-mar-en-la-vaca-multicolor" target="_blank" rel="noopener">Leer la nota →</a></p>
         </div>
         <div class="critica">
@@ -594,7 +598,7 @@ fbq('track', 'PageView');
       <div class="kicker">En escena</div>
       <h2>Así se vivieron las primeras funciones</h2>
       <div class="galeria">
-        <a href="fotos/escena-01.jpg" data-visor><img src="fotos/escena-01.jpg" alt="Las tres hermanas en escena — Tres historias del mar" loading="lazy"></a>
+        <a href="fotos/escena-01.jpg" data-visor><img src="fotos/escena-01.jpg" alt="Las tres hermanas en una escena de quiebre — Tres historias del mar" loading="lazy"></a>
         <a href="fotos/escena-02.jpg" data-visor><img src="fotos/escena-02.jpg" alt="Una escena entre hermanas — Tres historias del mar" loading="lazy"></a>
         <a href="fotos/escena-03.jpg" data-visor><img src="fotos/escena-03.jpg" alt="Brindis en escena — Tres historias del mar" loading="lazy"></a>
         <a href="fotos/escena-04.jpg" class="vertical" data-visor><img src="fotos/escena-04.jpg" alt="La escultura de los rostros — Tres historias del mar" loading="lazy"></a>
@@ -604,7 +608,7 @@ fbq('track', 'PageView');
         <a href="fotos/escena-08.jpg" class="vertical" data-visor><img src="fotos/escena-08.jpg" alt="El abrazo — Tres historias del mar" loading="lazy"></a>
         <a href="fotos/escena-09.jpg" data-visor><img src="fotos/escena-09.jpg" alt="Saludo final del elenco — Tres historias del mar" loading="lazy"></a>
       </div>
-      <p class="credito">Fotos de las funciones del 24 y 25 de octubre en La Vaca Multicolor.</p>
+      <p class="credito">Fotos de las funciones del 24 y 25 de octubre · Fotografía: <a href="https://www.instagram.com/_glitch.pe/" target="_blank" rel="noopener" style="color:var(--cta);font-weight:700;text-decoration:none;">Glitch (@_glitch.pe)</a></p>
     </div>
   </section>
 
@@ -617,13 +621,14 @@ fbq('track', 'PageView');
         DISPONIBILIDAD: cambia solo la palabra de data-estado en cada fecha.
           disponible  → muestra "Disponible"
           ultimas     → muestra "Quedan pocas entradas" (úsalo cuando queden ~8 o menos)
+          pronto      → muestra "¡Este fin de semana!" en rojo
           agotado     → muestra "Sold out" y atenúa la fecha
       -->
       <ul class="funciones">
         <li data-estado="agotado"><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
         <li data-estado="agotado"><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
-        <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
-        <li data-estado="disponible"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
+        <li data-estado="pronto"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
+        <li data-estado="pronto"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
         <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
         <li data-estado="disponible"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
       </ul>
