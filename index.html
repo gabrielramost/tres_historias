@@ -369,12 +369,14 @@
   }
   .funciones li[data-estado="disponible"]::after{ content: "Disponible"; color: var(--wa); }
   .funciones li[data-estado="ultimas"]{ border-color: var(--alerta); }
-  .funciones li[data-estado="ultimas"]::after{ content: "Quedan pocas entradas"; color: var(--alerta); }
+  .funciones li[data-estado="ultimas"]::after{ content: "¡Últimas entradas!"; color: var(--alerta); font-weight: 700; }
   .funciones li[data-estado="pronto"]{ border-color: var(--cta); }
   .funciones li[data-estado="pronto"]::after{ content: "¡Este fin de semana!"; color: var(--cta); font-weight: 700; }
   .funciones li[data-estado="agotado"]{ opacity: .55; }
   .funciones li[data-estado="agotado"] .num{ text-decoration: line-through; }
   .funciones li[data-estado="agotado"]::after{ content: "Sold out"; color: var(--ink); }
+  .funciones li[data-estado="realizada"]{ opacity: .55; }
+  .funciones li[data-estado="realizada"]::after{ content: "Función realizada"; color: var(--ink); }
   @media (max-width: 640px){
     .funciones{ grid-template-columns: repeat(3, 1fr); }
   }
@@ -620,16 +622,17 @@ fbq('track', 'PageView');
       <!--
         DISPONIBILIDAD: cambia solo la palabra de data-estado en cada fecha.
           disponible  → muestra "Disponible"
-          ultimas     → muestra "Quedan pocas entradas" (úsalo cuando queden ~8 o menos)
+          ultimas     → muestra "¡Últimas entradas!" en rojo
           pronto      → muestra "¡Este fin de semana!" en rojo
           agotado     → muestra "Sold out" y atenúa la fecha
+          realizada   → muestra "Función realizada" y atenúa la fecha (sin tachar)
       -->
       <ul class="funciones">
         <li data-estado="agotado"><span class="dia">Sáb</span><span class="num">24</span><span class="mes">octubre</span></li>
         <li data-estado="agotado"><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
-        <li data-estado="pronto"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
-        <li data-estado="pronto"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
-        <li data-estado="disponible"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
+        <li data-estado="realizada"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
+        <li data-estado="realizada"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
+        <li data-estado="ultimas"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
         <li data-estado="disponible"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
       </ul>
       <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">Sala de 35 butacas por función: cuando una fecha se llena, no abrimos más cupos.</p>
