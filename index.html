@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Tres historias del mar — Rueda Cultural</title>
-<meta name="description" content="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince. Entradas desde S/ 25.">
+<title>Tres historias del mar — Temporada agotada · Rueda Cultural</title>
+<meta name="description" content="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Temporada agotada: del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince. ¡Gracias por llenar la sala!">
 
 <!-- Vista previa al compartir el link (WhatsApp, Facebook, Instagram, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://gabrielramost.github.io/tres_historias/">
 <meta property="og:title" content="Tres historias del mar — Rueda Cultural">
-<meta property="og:description" content="De Mariana de Althaus, dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince. Entradas desde S/ 25.">
-<meta property="og:image" content="https://gabrielramost.github.io/tres_historias/og.jpg">
+<meta property="og:description" content="¡Temporada agotada! ¡Temporada agotada! De Mariana de Althaus, dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince.">
+<meta property="og:image" content="https://gabrielramost.github.io/tres_historias/og-agotada.jpg">
 <meta property="og:image:width" content="1000">
-<meta property="og:image:height" content="1258">
+<meta property="og:image:height" content="1250">
 <meta property="og:locale" content="es_PE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tres historias del mar — Rueda Cultural">
-<meta name="twitter:description" content="De Mariana de Althaus, dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince.">
-<meta name="twitter:image" content="https://gabrielramost.github.io/tres_historias/og.jpg">
+<meta name="twitter:description" content="¡Temporada agotada! De Mariana de Althaus, dirigida por Akemi Toma. Del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince.">
+<meta name="twitter:image" content="https://gabrielramost.github.io/tres_historias/og-agotada.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -202,6 +202,15 @@
   }
   .cta-inicio .btn{ margin-top: 22px; }
   .cta-inicio .microcopy{ color: var(--sky); margin: 22px 0 0; }
+  .agotada{ background: #f1ece4; border-bottom: 1px solid #e2d9cc; }
+  .agotada.cta-inicio{ background: #f1ece4; border-top: 0; }
+  .agotada.cta-inicio .wrap{ display: block; padding: 40px 24px 44px; text-align: center; max-width: 720px; }
+  .agotada .sello{ display: inline-block; font-family: 'Archivo Black', sans-serif; color: #fff; background: #7a1c24; padding: 8px 18px; letter-spacing: .08em; font-size: 0.95rem; transform: rotate(-2deg); margin-bottom: 18px; }
+  .agotada h2{ color: #7a1c24; font-size: clamp(1.7rem, 5vw, 2.5rem); margin: 0 0 16px; }
+  .agotada p{ font-size: 1.05rem; line-height: 1.65; color: var(--ink); margin: 0 0 14px; }
+  .agotada .despedida{ font-weight: 700; color: #7a1c24; margin-top: 20px; }
+  .agotada .creditos-cierre{ font-size: 0.92rem; color: var(--sea); line-height: 1.6; margin-top: 18px; }
+  .agotada.cta-inicio .btn{ margin-top: 22px; width: auto; }
   @media (max-width: 640px){
     .cta-inicio .btn{ width: 100%; }
     .cta-inicio .microcopy{ margin-top: 0; }
@@ -529,7 +538,7 @@ fbq('track', 'PageView');
   <h1 class="oculto">Tres historias del mar, de Mariana de Althaus — dirigida por Akemi Toma. Temporada del 24 de octubre al 8 de noviembre en La Vaca Multicolor, Lince.</h1>
 
   <div class="hero">
-    <img src="flyer.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Rueda Cultural.">
+    <img src="agotada.jpg" alt="Tres historias del mar, de Mariana de Althaus. Dirigida por Akemi Toma. Temporada agotada, del 24 de octubre al 8 de noviembre de 2026.">
   </div>
 
   <div class="ficha">
@@ -548,17 +557,24 @@ fbq('track', 'PageView');
       </div>
       <div>
         <div class="label">Entradas</div>
-        <div class="value">Desde S/ 25</div>
+        <div class="value">Agotadas</div>
       </div>
     </div>
   </div>
 
-  <div class="cta-inicio">
+  <!-- Anuncio de cierre -->
+  <section class="agotada cta-inicio" id="agotada">
     <div class="wrap">
-      <a class="btn compra" href="#como-comprar">Comprar entradas</a>
-      <span class="microcopy">Por WhatsApp o en la web · Te confirmamos tu fecha antes de pagar</span>
+      <span class="sello">TEMPORADA AGOTADA</span>
+      <h2>🌊 ¡Gracias por llenar la sala! 🎭</h2>
+      <p>Las entradas para nuestras últimas funciones de <b>Tres historias del mar</b> se agotaron, y eso es gracias a cada una de las personas que vinieron, recomendaron, compartieron y llenaron la sala 💜</p>
+      <p>Gracias al público, a la prensa que nos acompañó y a todo el equipo que hizo posible esta temporada del 24 de octubre al 8 de noviembre.</p>
+      <p>Este fin de semana nos despedimos del escenario, pero vienen más novedades ✨</p>
+      <p class="creditos-cierre">De Mariana de Althaus · Dirigida por Akemi Toma<br>Elenco: Ana Paula Gálvez, María Fernanda Misajel y Gabriela Gaspar<br>Producción: Rueda Cultural</p>
+      <p class="despedida">¡Nos vemos pronto! 🌊</p>
+      <a class="btn compra" href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">Síguenos en @ruedacultural</a>
     </div>
-  </div>
+  </section>
 
   <!-- 1. La obra -->
   <section>
@@ -632,110 +648,10 @@ fbq('track', 'PageView');
         <li data-estado="agotado"><span class="dia">Dom</span><span class="num">25</span><span class="mes">octubre</span></li>
         <li data-estado="realizada"><span class="dia">Sáb</span><span class="num">31</span><span class="mes">octubre</span></li>
         <li data-estado="realizada"><span class="dia">Dom</span><span class="num">1</span><span class="mes">noviembre</span></li>
-        <li data-estado="ultimas"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
-        <li data-estado="disponible"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
+        <li data-estado="agotado"><span class="dia">Sáb</span><span class="num">7</span><span class="mes">noviembre</span></li>
+        <li data-estado="agotado"><span class="dia">Dom</span><span class="num">8</span><span class="mes">noviembre</span></li>
       </ul>
-      <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">Sala de 35 butacas por función: cuando una fecha se llena, no abrimos más cupos.</p>
-    </div>
-  </section>
-
-  <!-- 3. Precios -->
-  <section>
-    <div class="wrap">
-      <div class="kicker">Entradas</div>
-      <h2>Precios</h2>
-      <div class="precios">
-        <div class="precio">
-          <div class="tipo">General</div>
-          <div class="monto">S/ 35</div>
-          <div class="detalle">Por persona</div>
-        </div>
-        <div class="precio">
-          <div class="tipo">Estudiantes</div>
-          <div class="monto">S/ 25</div>
-          <div class="detalle">Presentando carné vigente en el ingreso</div>
-        </div>
-        <div class="precio destacado">
-          <div class="tipo">Promoción en pareja</div>
-          <div class="monto">2 entradas por S/ 50</div>
-          <div class="detalle">S/ 25 cada entrada</div>
-        </div>
-      </div>
-      <div class="preventa-cerrada">
-        <span>Preventa</span>
-        <s>S/ 25</s>
-        <b>La preventa culminó el 10 de octubre</b>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Cómo comprar + dos caminos -->
-  <section class="alt" id="como-comprar">
-    <div class="wrap">
-      <div class="kicker">Cómo comprar</div>
-      <h2>Cuatro pasos para tener tu entrada</h2>
-      <ol class="pasos">
-        <li>
-          <div>
-            <div class="titulo">Elige tu función y cuántas entradas</div>
-            <div class="texto">Revisa que tu fecha esté disponible. Si tienes dudas, escríbenos y te confirmamos antes de pagar.</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <div class="titulo">Paga por Yape o Plin</div>
-            <div class="texto">Abona el monto de tus entradas al <strong>983 545 543</strong>, a nombre de <strong>Gabriel Ramos</strong>. Guarda la captura.</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <div class="titulo">Envía tus datos y la captura</div>
-            <div class="texto">Por WhatsApp (nosotros te registramos) o tú mismo en el formulario de esta página.</div>
-          </div>
-        </li>
-        <li>
-          <div>
-            <div class="titulo">Recibe tu entrada</div>
-            <div class="texto">Verificamos tu pago y te enviamos tu entrada con código QR a tu correo.</div>
-          </div>
-        </li>
-      </ol>
-
-      <p class="reglas"><strong>Importante:</strong> puertas 7:30 p.m. Una vez iniciada la función no se permite el ingreso.</p>
-
-      <div class="caminos">
-        <div class="camino">
-          <h3>Compra por WhatsApp</h3>
-          <p>La forma más rápida: te confirmamos disponibilidad antes de pagar y registramos tus datos por ti.</p>
-          <a class="btn wa" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>Comprar por WhatsApp</a>
-        </div>
-        <div class="camino">
-          <h3>Compra directa en la web</h3>
-          <p>Si tu fecha figura como disponible, paga y llena el formulario tú mismo.</p>
-          <a class="btn contorno" href="#comprar">Ir al formulario</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Formulario -->
-  <section class="form-section" id="comprar">
-    <div class="wrap">
-      <div class="kicker">Compra directa</div>
-      <h2>Completa tus datos</h2>
-      <div class="cuerpo">
-        <p>Antes de empezar: revisa que tu función esté disponible y paga por Yape o Plin al <strong>983 545 543</strong> (Gabriel Ramos). Ten a la mano la captura.</p>
-      </div>
-      <div class="form-frame">
-        <iframe src="https://airtable.com/embed/appf1sKFMjFSb8kkp/pagQBFMy6S9mgq6a8/form" title="Formulario de compra de entradas"></iframe>
-      </div>
-      <p class="form-nota">Tu entrada queda confirmada cuando verifiquemos tu pago. Te la enviamos a tu correo.</p>
-
-      <div class="form-ayuda">
-        ¿El formulario no carga o prefieres que te atendamos directo? Escríbenos y compramos tu entrada por WhatsApp.
-        <br>
-        <a class="btn claro" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" data-wa>Comprar por WhatsApp</a>
-      </div>
+      <p style="margin-top:14px; font-size:0.92rem; color:var(--sea);">La venta de entradas está cerrada. ¡Gracias a todas las personas que nos acompañaron!</p>
     </div>
   </section>
 
@@ -779,12 +695,11 @@ fbq('track', 'PageView');
 
   <div class="barra">
     <div class="info">
-      <b>Desde S/ 25</b>
-      <span id="barra-sub">24 oct — 8 nov</span>
+      <b>¡Temporada agotada!</b>
+      <span id="barra-sub">Gracias por llenar la sala 💜</span>
     </div>
     <div class="cta">
-      <a class="wa" href="https://wa.me/51983545543?text=Hola%2C%20quiero%20comprar%20entradas%20para%20Tres%20historias%20del%20mar.%0AFunci%C3%B3n%3A%20%0ACantidad%3A%20" target="_blank" rel="noopener" data-wa>WhatsApp</a>
-      <a href="#como-comprar">Comprar</a>
+      <a href="https://instagram.com/ruedacultural" target="_blank" rel="noopener">@ruedacultural</a>
     </div>
   </div>
 
